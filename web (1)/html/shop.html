@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Giỏ Hàng</title>
+  <link rel="stylesheet" href="../css/shop.css"> <!-- Đảm bảo file CSS bạn đã đưa nằm trong cùng thư mục hoặc cập nhật đúng đường dẫn -->
+</head>
+<body>
+
+  <div id="header">
+    <h1 class="site-title">Cửa Hàng Trực Tuyến</h1>
+  </div>
+
+  <div id="navigation-menu">
+    <div class="nav-links">
+      <a href="index.html" class="active">Trang chủ</a>
+
+
+    </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Tìm kiếm sản phẩm...">
+      <button>Tìm</button>
+    </div>
+
+
+<a href="checkout.html">
+    <button class="custom-button">Mua ngay</button>
+</a>
+    <div class="account-section">
+      <a href="#" class="account-icon">
+        <span class="user-icon">👤</span>
+      </a>
+    </div>
+  </div>
+
+  <div id="content-wrapper">
+      <aside id="sidebar">
+       <h2>Giỏ hàng</h2>
+      <div id="cart">
+        <ul id="cart-items"></ul>
+        <p><strong>Tổng tiền:</strong> <span id="total">0</span> ₫</p>
+      </div>
+      </aside>
+
+ 
+<!--Thêm vào các sản phẩn đã dducoocj them vào giỏ hàng tại đây-->
+    <div id="main-content">
+      <h2>Sản phẩm đã thêm và giỏ hàng</h2>
+      <div id="product-list">
+        <div class="card">
+          <img src="https://via.placeholder.com/150" alt="Sản phẩm 1">
+          <h3>iPhone 14</h3>
+          <p>25.000.000₫</p>
+          <button onclick="addToCart('iPhone 14', 25000000)">Thêm vào giỏ</button>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/150" alt="Sản phẩm 2">
+          <h3>Samsung Galaxy S23</h3>
+          <p>22.000.000₫</p>
+          <button onclick="addToCart('Galaxy S23', 22000000)">Thêm vào giỏ</button>
+        </div>
+        <!-- Thêm các sản phẩm khác nếu cần -->
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="footer">
+    &copy; 2025 Cửa hàng trực tuyến. Bản quyền thuộc về bạn.
+  </div>
+
+  <script>
+    let cart = [];
+    function addToCart(productName, price) {
+      cart.push({ name: productName, price: price });
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      const cartItems = document.getElementById('cart-items');
+      const totalEl = document.getElementById('total');
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price.toLocaleString()}₫`;
+        cartItems.appendChild(li);
+        total += item.price;
+      });
+
+      totalEl.textContent = total.toLocaleString();
+    }
+  </script>
+
+</body>
+</html>

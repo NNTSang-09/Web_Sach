@@ -1,0 +1,330 @@
+/* Toàn bộ trang dùng font Arial, không có margin và padding mặc định */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Phần header chính với nền gradient chuyển màu, padding rộng, text căn giữa, bóng nhẹ dưới chân */
+#header {
+  background: linear-gradient(135deg, #fdfcfb, #e2d1c3, #d1f4f9, #fbc2eb, #a18cd1);
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.05);
+  animation: bgShift 12s ease infinite; /* hiệu ứng chuyển nền */
+  background-size: 500% 500%; /* để animation gradient rộng hơn */
+}
+
+/* Tiêu đề chính (site title) với font to, đậm, màu trắng và bóng chữ */
+.site-title {
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  letter-spacing: 2px;
+  transition: transform 0.3s ease, text-shadow 0.3s ease; /* hiệu ứng chuyển động mượt */
+}
+
+/* Khi hover vào tiêu đề thì chữ to lên nhẹ, bóng sáng hơn */
+.site-title:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px #fff, 0 0 15px #ff69b4, 0 0 20px #00bcd4;
+}
+
+/* Định nghĩa animation chuyển vị trí nền gradient liên tục */
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Thanh navigation menu cố định trên đầu, nền trắng, padding, dùng flex để căn chỉnh các phần bên trong */
+#navigation-menu {
+  background-color: #f9f9f9;
+  padding: 14px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky; /* luôn dính trên đầu khi cuộn */
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Phần thanh tìm kiếm trong navigation - dùng flex căn chỉnh ngang */
+#navigation-menu .search-bar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 400px; /* giới hạn chiều rộng */
+}
+
+/* Input tìm kiếm với padding, viền tròn bên trái, màu nền trắng */
+#navigation-menu .search-bar input {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-right: none; /* bỏ viền bên phải để nối liền với nút */
+  border-radius: 20px 0 0 20px; /* bo tròn bên trái */
+  width: 100%;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #333;
+  transition: all 0.3s ease; /* hiệu ứng khi focus */
+}
+
+/* Khi input được focus thì viền và bóng viền sáng lên */
+#navigation-menu .search-bar input:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  border-color: #007bff;
+}
+
+/* Nút tìm kiếm kế bên input, bo tròn bên phải, nền xanh dương */
+#navigation-menu .search-bar button {
+  padding: 10px 16px;
+  border: 1px solid #007bff;
+  border-left: none; /* bỏ viền bên trái để liền input */
+  border-radius: 0 20px 20px 0; /* bo tròn bên phải */
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover nút tìm kiếm sẽ đậm hơn và phóng to nhẹ */
+#navigation-menu .search-bar button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Phần liên kết điều hướng trong navigation - dùng flex và khoảng cách đều */
+#navigation-menu .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Các link điều hướng có màu xám, không gạch chân, padding, bo tròn nhẹ */
+#navigation-menu .nav-links a {
+  color: #333;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+}
+
+/* Hover vào link có nền xanh nhẹ và chữ xanh, dịch nhẹ lên trên */
+#navigation-menu .nav-links a:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+  transform: translateY(-2px);
+}
+
+/* Link đang được active (chọn) có nền xanh, chữ trắng đậm */
+#navigation-menu .nav-links a.active {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Phần icon tài khoản, cách phần nav-links 20px */
+.account-section {
+  margin-left: 20px;
+}
+
+/* Icon tài khoản hình tròn, nền xám nhạt, căn giữa */
+.account-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaeaea;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Hover icon tài khoản đổi màu nền và phóng to nhẹ */
+.account-icon:hover {
+  background-color: #d0d0d0;
+  transform: scale(1.1);
+}
+
+/* Biểu tượng user bên trong icon, màu xám đậm */
+.user-icon {
+  font-size: 20px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+/* Khi hover icon thì biểu tượng đổi sang xanh dương */
+.account-icon:hover .user-icon {
+  color: #007bff;
+}
+
+/* Wrapper chính chứa sidebar và main content, dùng flex để chia layout ngang */
+#content-wrapper {
+  display: flex;
+  min-height: 500px; /* chiều cao tối thiểu */
+}
+
+/* Thanh sidebar với nền gradient rực rỡ, rộng 20%, padding, chữ trắng */
+#sidebar {
+  background: linear-gradient(135deg, #ff6f61, #ff9a44, #28a745);
+  width: 20%;
+  padding: 25px;
+  color: white;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2); /* bóng bên phải */
+  border-right: 3px solid #ffd700; /* viền vàng bên phải */
+  border-radius: 10px 0 0 10px; /* bo tròn góc trái trên dưới */
+  transition: transform 0.3s ease;
+}
+
+/* Khi hover vào sidebar dịch sang trái nhẹ */
+#sidebar:hover {
+  transform: translateX(-5px);
+}
+
+/* Tiêu đề sidebar to, đậm, viền dưới vàng, chữ hoa */
+#sidebar h2 {
+  margin-top: 0;
+  font-size: 26px;
+  border-bottom: 3px solid #ffd700;
+  padding-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Danh sách menu trong sidebar không có dấu chấm, không padding */
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+/* Mỗi mục menu sidebar có margin, padding, nền mờ trắng, bo tròn */
+#sidebar ul li {
+  margin: 18px 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Khi hover mục menu sidebar thì nền vàng nhạt, phóng to nhẹ và bóng lớn hơn */
+#sidebar ul li:hover {
+  background-color: rgba(255, 215, 0, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Link bên trong sidebar màu trắng, padding, không gạch chân */
+#sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+/* Hover link sidebar màu vàng và bóng sáng */
+#sidebar ul li a:hover {
+  color: #ffeb3b;
+  text-shadow: 0 0 5px #ffeb3b, 0 0 10px #ffeb3b;
+}
+
+/* Khu vực nội dung chính bên phải với nền xanh nhạt, rộng 80% */
+#main-content {
+  background-color: #add8e6;
+  width: 80%;
+  padding: 20px;
+}
+
+/* Danh sách sản phẩm dùng grid chia 5 cột, khoảng cách đều */
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 100%;
+}
+
+/* Mỗi thẻ sản phẩm có viền, bo tròn, padding, nền trắng, bóng nhẹ */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+/* Hover thẻ sản phẩm phóng to nhẹ */
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Hình ảnh sản phẩm co giãn vừa đủ, cố định chiều cao */
+.card img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Tiêu đề sản phẩm màu đen, cỡ chữ vừa */
+.card h3 {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Giá sản phẩm màu đỏ nổi bật, cỡ chữ lớn */
+.card p {
+  font-size: 18px;
+  color: #ff0000;
+  margin: 0;
+}
+
+/* Link trong thẻ sản phẩm không gạch chân, màu inherit */
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Footer nền xanh đậm, padding nhỏ, chữ trắng, căn giữa */
+#footer {
+  background-color: #0056b3;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.custom-button {
+  background-color: #007bff;        /* Màu xanh chuẩn của nút */
+  color: white;                    /* Chữ màu trắng */
+  padding: 10px 24px;              /* Khoảng cách trong nút */
+  border: none;                   /* Bỏ viền mặc định */    
+  font-size: 16px;                /* Cỡ chữ vừa phải */
+  font-weight: 600;               /* Đậm vừa phải */
+  cursor: pointer;                /* Con trỏ tay khi hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Hiệu ứng mượt */
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3); /* Bóng nhẹ */
+}
+
+.custom-button:hover {
+  background-color: #0056b3;      /* Đổi màu xanh đậm khi hover */
+  transform: scale(1.05);         /* Phóng to nhẹ */
+  box-shadow: 0 4px 10px rgba(0, 86, 179, 0.5); /* Bóng đậm hơn */
+}
